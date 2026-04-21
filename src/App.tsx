@@ -1,6 +1,7 @@
 import React from "react";
 import type { FC } from "react";
 import { motion } from "framer-motion";
+import WebGLBackground from './components/WebGLBackground'
 import {
   ArrowRight,
   Mail,
@@ -18,7 +19,6 @@ import {
   Server,
   BarChart3,
 } from "lucide-react";
-
 import type { Variants } from "framer-motion";
 
 const fadeUp: Variants = {
@@ -112,6 +112,24 @@ function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+function BRMonogram(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" {...props}>
+      <defs>
+        <linearGradient id="br-gradient" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#60A5FA" />
+          <stop offset="0.5" stopColor="#818CF8" />
+          <stop offset="1" stopColor="#A78BFA" />
+        </linearGradient>
+      </defs>
+      <rect x="4" y="4" width="56" height="56" rx="18" fill="rgba(255,255,255,0.04)" />
+      <rect x="4.5" y="4.5" width="55" height="55" rx="17.5" stroke="rgba(255,255,255,0.12)" />
+      <path d="M20 16H33C40.18 16 44 19.2 44 24.88C44 28.95 41.78 31.56 37.68 32.4C42.43 33.02 45 35.92 45 40.72C45 46.9 40.61 50 32.48 50H20V16ZM27.45 21.76V29.98H31.52C35.42 29.98 37.21 28.57 37.21 25.93C37.21 23.19 35.39 21.76 31.52 21.76H27.45ZM27.45 35.36V44.24H32.1C36.48 44.24 38.31 42.73 38.31 39.86C38.31 36.92 36.43 35.36 31.96 35.36H27.45Z" fill="url(#br-gradient)" />
+      <path d="M39.5 41.5L47 49" stroke="url(#br-gradient)" strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 type Strength = {
   icon: React.ComponentType<any>;
   title: string;
@@ -160,9 +178,10 @@ const GlassCard: FC<{ children: React.ReactNode; className?: string }> = ({ chil
   );
 };
 
-const AnimatedPortfolioHomepage: FC = () => {
+const App: FC = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
+      <WebGLBackground />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(77,107,255,0.18),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(120,64,255,0.16),transparent_25%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_25%)]" />
       <motion.div
         className="pointer-events-none absolute inset-0 opacity-30"
@@ -184,8 +203,9 @@ const AnimatedPortfolioHomepage: FC = () => {
           className="mb-8 flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-5 py-4 backdrop-blur-xl"
         >
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-blue-500/20 to-violet-500/20 text-lg font-semibold text-white">
-              BR
+            <div className="relative flex h-12 w-12 items-center justify-center">
+              <div className="absolute inset-0 rounded-[18px] bg-gradient-to-br from-blue-500/20 to-violet-500/20 blur-md" />
+              <BRMonogram className="relative h-12 w-12 drop-shadow-[0_8px_24px_rgba(96,165,250,0.24)]" />
             </div>
             <div>
               <p className="text-sm font-semibold tracking-[0.22em] text-white/95">BENJAMIN RAY</p>
@@ -581,4 +601,4 @@ const AnimatedPortfolioHomepage: FC = () => {
   );
 };
 
-export default AnimatedPortfolioHomepage;
+export default App;
