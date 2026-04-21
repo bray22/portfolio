@@ -1,17 +1,22 @@
-import React from "react";
+import { useRef } from "react";
+import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 
 function Scene() {
-  const meshRef = React.useRef<any>(null);
+  const meshRef = useRef<THREE.Mesh>(null!);
 
   useFrame((state) => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.z = state.clock.elapsedTime * 0.04;
-    meshRef.current.material.uniforms.uTime.value = state.clock.elapsedTime;
+    const mesh = meshRef.current;
+    const material = mesh?.material as THREE.ShaderMaterial | undefined;
+
+    if (!mesh || !material?.uniforms?.uTime) return;
+
+    mesh.rotation.z = state.clock.elapsedTime * 0.04;
+    material.uniforms.uTime.value = state.clock.elapsedTime;
   });
 
   return (
-    <mesh ref={meshRef} scale={[2.6, 2.6, 1]}>
+    <mesh ref={meshRef} scale={[3, 3, 1]}>
       <planeGeometry args={[2, 2, 64, 64]} />
       <shaderMaterial
         transparent
@@ -41,8 +46,9 @@ function Scene() {
           void main() {
             vec2 uv = vUv;
 
-            float drift = sin(uv.x * 8.0 + uTime * 0.25) * 0.04
-                        + cos(uv.y * 10.0 - uTime * 0.2) * 0.04;
+            float drift =
+              sin(uv.x * 8.0 + uTime * 0.25) * 0.04 +
+              cos(uv.y * 10.0 - uTime * 0.2) * 0.04;
 
             vec3 deep = vec3(0.02, 0.05, 0.12);
             vec3 blue = vec3(0.10, 0.22, 0.52);
@@ -70,7 +76,7 @@ function Scene() {
 export default function WebGLBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 opacity-80">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
         <Scene />
       </Canvas>
     </div>
