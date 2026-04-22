@@ -75,7 +75,7 @@ function Scene() {
 
 export default function WebGLBackground() {
   return (
-    <div className="pointer-events-none absolute inset-0 opacity-80">
+    <div className="pointer-events-none absolute inset-0 opacity-100">
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
         <Scene />
       </Canvas>

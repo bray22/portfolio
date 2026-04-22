@@ -181,7 +181,7 @@ const GlassCard: FC<{ children: React.ReactNode; className?: string }> = ({ chil
 const App: FC = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
-      <WebGLBackground />
+      {/* <WebGLBackground /> */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(77,107,255,0.18),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(120,64,255,0.16),transparent_25%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_25%)]" />
       <motion.div
         className="pointer-events-none absolute inset-0 opacity-30"
@@ -229,7 +229,7 @@ const App: FC = () => {
           </motion.button>
         </motion.header>
 
-        <section className="grid min-h-[78vh] items-center gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-14">
+        <section className="grid items-start gap-10 pt-6 pb-10 lg:grid-cols-[1.1fr_0.9fr] lg:pt-10 lg:pb-14">
           <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-3xl">
             <motion.div
               variants={fadeUp}
@@ -420,7 +420,7 @@ const App: FC = () => {
                 </GlassCard>
               </motion.div>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-3 pt-[360px] lg:pt-[410px]">
+              <div className="mt-8 flex flex-wrap justify-center gap-3 pt-15 lg:pt-40">
                 {[
                   { label: "React", icon: Code2 },
                   { label: "TypeScript", icon: Database },
@@ -453,7 +453,7 @@ const App: FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={stagger}
-          className="py-14"
+          className="pt-10 pb-14"
         >
           <SectionHeading eyebrow="Selected Work" title="Systems I’ve Built" />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
