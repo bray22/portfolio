@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import type { PointerEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 type MousePosition = {
@@ -21,16 +20,16 @@ const systemLayers = [
 ];
 
 function Hero() {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
+  const [mousePosition] = useState<MousePosition>({ x: 0, y: 0 });
 
-  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+  // const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+  //   const rect = event.currentTarget.getBoundingClientRect();
 
-    setMousePosition({
-      x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
-      y: ((event.clientY - rect.top) / rect.height - 0.5) * 2,
-    });
-  };
+  //   setMousePosition({
+  //     x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
+  //     y: ((event.clientY - rect.top) / rect.height - 0.5) * 2,
+  //   });
+  // };
 
   return (
     <section className="relative overflow-hidden rounded-[36px] bg-transparent px-8 py-16 lg:px-16">
