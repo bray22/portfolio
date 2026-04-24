@@ -20,7 +20,7 @@ const PageSection: FC<PageSectionProps> = ({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden py-24 md:py-32 ${variants[variant]}`}
+      className={`relative overflow-hidden pt-20 pb-12 md:pt-20 md:pb-14 ${variants[variant]}`}
     >
       <div className="mx-auto max-w-7xl px-6">
         {children}

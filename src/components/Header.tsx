@@ -15,7 +15,7 @@ const Header = () => {
     const onScroll = () => {
       const currentY = window.scrollY;
 
-      if (currentY > lastY && currentY > 120) {
+      if (currentY > lastY && currentY > 40) {
         setHidden(true);
       } else {
         setHidden(false);

@@ -1,274 +1,187 @@
+import React, { useState } from "react";
+import type { PointerEvent } from "react";
 import { motion } from "framer-motion";
-import type { FC } from "react";
-import {
-  ArrowRight,
-  Mail,
-  MapPin,
-  Monitor,
-  Phone,
-  Code2,
-  Database,
-  Server,
-} from "lucide-react";
 
-import GlassCard from "./cards/GlassCard";
-import GitHubIcon from "./icons/GitHubIcon";
-import LinkedInIcon from "./icons/LinkedInIcon";
-import { fadeUp, stagger } from "../animations/motion";
+type MousePosition = {
+  x: number;
+  y: number;
+};
 
-const Hero: FC = () => {
+const focusAreas = [
+  "Frontend architecture",
+  "Design systems",
+  "Product UI",
+  "Performance delivery",
+];
+
+const systemLayers = [
+  { label: "Design System", value: "Reusable UI patterns" },
+  { label: "Architecture", value: "Typed React boundaries" },
+  { label: "Experience", value: "Clear product flows" },
+];
+
+function Hero() {
+  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    setMousePosition({
+      x: ((event.clientX - rect.left) / rect.width - 0.5) * 2,
+      y: ((event.clientY - rect.top) / rect.height - 0.5) * 2,
+    });
+  };
+
   return (
-    <section className="grid items-start gap-10 pt-6 pb-10 lg:grid-cols-[1.1fr_0.9fr] lg:pt-10 lg:pb-14">
-      <motion.div
-        variants={stagger}
-        initial="hidden"
-        animate="visible"
-        className="max-w-3xl"
-      >
-        <motion.div
-          variants={fadeUp}
-          custom={0}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-blue-200"
-        >
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(74,222,128,0.8)]" />
-          Senior Software Engineer
-        </motion.div>
-
-        <motion.h1
-          variants={fadeUp}
-          custom={1}
-          className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl"
-        >
-          I build scalable systems behind intuitive{" "}
-          <motion.span
-            className="bg-gradient-to-r from-blue-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent"
-            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-            style={{ backgroundSize: "200% 200%" }}
-          >
-            interfaces.
-          </motion.span>
-        </motion.h1>
-
-        <motion.p
-          variants={fadeUp}
-          custom={2}
-          className="mt-6 max-w-2xl text-lg leading-8 text-white/68 md:text-xl"
-        >
-          20+ years building high-performance web platforms across e-commerce,
-          healthcare, and financial services using React, TypeScript, Node.js,
-          and modern cloud technologies.
-        </motion.p>
-
-        <motion.div variants={fadeUp} custom={3} className="mt-9 flex flex-wrap gap-4">
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            href="#work"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-blue-500 px-6 py-4 text-sm font-medium text-white shadow-[0_20px_50px_rgba(59,130,246,0.28)] transition"
-          >
-            Explore My Work
-            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-          </motion.a>
-
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-2xl border border-white/12 bg-white/[0.03] px-6 py-4 text-sm font-medium text-white/90"
-          >
-            View My Résumé
-          </motion.a>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUp}
-          custom={4}
-          className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/60"
-        >
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-blue-300" />
-            Franklin, MA
-          </div>
-          <div className="flex items-center gap-2">
-            <Monitor className="h-4 w-4 text-blue-300" />
-            Open to Remote/Hybrid
-          </div>
-          <div className="flex items-center gap-2">
-            <Mail className="h-4 w-4 text-blue-300" />
-            bray22@gmail.com
-          </div>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUp}
-          custom={5}
-          className="mt-6 flex flex-wrap items-center gap-6 text-sm text-white/72"
-        >
-          <a className="inline-flex items-center gap-2 transition hover:text-white" href="#">
-            <LinkedInIcon className="h-4 w-4" />
-            LinkedIn
-          </a>
-          <a className="inline-flex items-center gap-2 transition hover:text-white" href="#">
-            <GitHubIcon className="h-4 w-4" />
-            GitHub
-          </a>
-          <a
-            className="inline-flex items-center gap-2 transition hover:text-white"
-            href="tel:15084944847"
-          >
-            <Phone className="h-4 w-4" />
-            (508) 494-4847
-          </a>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 32 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.25 }}
-        className="relative"
-      >
-        <div className="relative mx-auto max-w-[620px]">
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute left-0 top-20 z-10 w-[46%]"
-          >
-            <GlassCard className="overflow-hidden p-0">
-              <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-              </div>
-
-              <div className="space-y-3 px-5 py-5 font-mono text-[11px] leading-6 text-blue-100/80">
-                <div>{`{`}</div>
-                <div className="pl-4 text-white/70">"orders": [</div>
-                <div className="pl-8 text-white/50">{`{ "id": 981, "status": "shipped" },`}</div>
-                <div className="pl-8 text-white/50">{`{ "id": 982, "status": "processing" }`}</div>
-                <div className="pl-4 text-white/70">],</div>
-                <div className="pl-4 text-white/70">"products": {`{`}</div>
-                <div className="pl-8 text-emerald-300">"sku": "1001",</div>
-                <div className="pl-8 text-sky-300">"stock": 64</div>
-                <div className="pl-4 text-white/70">{`}`}</div>
-                <div>{`}`}</div>
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <div className="absolute inset-0 z-0 hidden lg:block">
-            <svg viewBox="0 0 620 520" className="h-full w-full">
-              {[120, 180, 240, 300].map((y, i) => (
-                <motion.path
-                  key={y}
-                  d={`M220 ${y} C 310 ${y}, 330 ${120 + i * 70}, 470 ${
-                    120 + i * 70
-                  }`}
-                  fill="transparent"
-                  stroke="rgba(96,165,250,0.75)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.2, delay: 0.9 + i * 0.12 }}
-                />
-              ))}
-            </svg>
+    <section className="relative overflow-hidden rounded-[36px] bg-transparent px-8 py-16 lg:px-16">
+      {/* Background glow */}
+     
+      {/* Layout */}
+      <div className="relative z-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        
+        {/* LEFT SIDE */}
+        <div>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-cyan-200">
+            <span className="h-2 w-2 rounded-full " />
+            SENIOR SOFTWARE ENGINEER
           </div>
 
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="relative ml-auto w-[54%] pt-2"
-          >
-            <GlassCard className="p-5">
-              <div className="mb-5 flex items-center justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.22em] text-white/45">
-                    Intuitive Interface
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">Dashboard</h3>
-                </div>
-                <div className="h-10 w-10 rounded-xl border border-white/10 bg-white/[0.04]" />
-              </div>
+          <h1 className="text-5xl font-bold leading-tight text-white lg:text-6xl">
+            I build scalable systems behind{" "}
+            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+              intuitive interfaces.
+            </span>
+          </h1>
 
-              <div className="space-y-4">
-                <GlassCard className="p-4">
-                  <p className="text-xs text-white/45">Total Orders</p>
-                  <div className="mt-2 flex items-end justify-between">
-                    <div>
-                      <p className="text-3xl font-semibold">8,842</p>
-                      <p className="mt-1 text-xs text-emerald-300">↑ 12.5%</p>
-                    </div>
-
-                    <div className="flex h-16 items-end gap-1">
-                      {[10, 14, 12, 18, 21, 16, 24].map((h, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ height: 6, opacity: 0.4 }}
-                          animate={{ height: h * 2, opacity: 1 }}
-                          transition={{ duration: 0.7, delay: 1.2 + i * 0.06 }}
-                          className="w-2 rounded-full bg-gradient-to-t from-blue-600 to-cyan-300"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </GlassCard>
-
-                <GlassCard className="p-4">
-                  <p className="mb-3 text-xs text-white/45">Top Products</p>
-
-                  {[64, 42, 38].map((value, i) => (
-                    <div key={i} className="mb-3 last:mb-0">
-                      <div className="mb-1 flex items-center justify-between text-xs text-white/70">
-                        <span>{["Leather Jacket", "Weekender Bag", "Sneakers"][i]}</span>
-                        <span>{value}</span>
-                      </div>
-
-                      <div className="h-2 rounded-full bg-white/8">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${(value / 64) * 100}%` }}
-                          transition={{ duration: 0.8, delay: 1.4 + i * 0.08 }}
-                          className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-400"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </GlassCard>
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3 pt-15 lg:pt-40">
-            {[
-              { label: "React", icon: Code2 },
-              { label: "TypeScript", icon: Database },
-              { label: "Node.js", icon: Server },
-            ].map((item, i) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 1.3 + i * 0.08 }}
-                  whileHover={{ y: -4 }}
-                >
-                  <GlassCard className="flex items-center gap-3 px-4 py-3 text-sm text-white/80">
-                    <Icon className="h-4 w-4 text-blue-300" />
-                    {item.label}
-                  </GlassCard>
-                </motion.div>
-              );
-            })}
-          </div>
+          <p className="mt-6 max-w-xl text-lg text-white/70">
+            20+ years building high-performance web platforms across e-commerce,
+            healthcare, and financial services using React, TypeScript, Node.js,
+            and modern cloud technologies.
+          </p>
         </div>
-      </motion.div>
+
+        {/* RIGHT SIDE MOCKUP */}
+        <motion.div
+          className="relative mx-auto hidden w-full max-w-[500px] lg:block"
+          animate={{
+            rotateY: mousePosition.x * 5,
+            rotateX: -mousePosition.y * 3,
+            y: [0, -8, 0],
+          }}
+          transition={{
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+            rotateX: { duration: 0.25 },
+            rotateY: { duration: 0.25 },
+          }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <div className="relative rounded-[32px] border border-white/20 bg-white/[0.07] p-6 text-white shadow-2xl shadow-black/40 backdrop-blur-2xl">
+            
+            {/* Glow overlay */}
+            {/* <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-[linear-gradient(135deg,rgba(255,255,255,0.24),transparent_32%,rgba(236,72,153,0.16)_72%,transparent)]" /> */}
+
+            <div className="relative">
+              {/* Header */}
+              <div className="mb-6 flex items-start justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.32em] text-fuchsia-200/70">
+                    Product System
+                  </p>
+                  <h3 className="mt-2 text-xl font-bold">
+                    Interfaces, thoughtfully built
+                  </h3>
+                </div>
+
+                <div className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-xs font-bold tracking-[0.24em] text-emerald-200">
+                  LIVE
+                </div>
+              </div>
+
+              {/* Grid */}
+              <div className="grid grid-cols-12 gap-4">
+                
+                {/* Focus */}
+                <div className="col-span-7 rounded-2xl border border-white/15 bg-white/[0.09] p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/50">
+                    Focus Areas
+                  </p>
+
+                  <div className="mt-4 space-y-3">
+                    {focusAreas.map((area) => (
+                      <div key={area} className="flex items-center gap-3">
+                        <span className="h-5 w-5 rounded-full border border-cyan-300/40 bg-cyan-300/10 text-center text-xs text-cyan-200">
+                          ✓
+                        </span>
+                        <span className="text-sm text-white/80">{area}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Metrics */}
+                <div className="col-span-5 rounded-2xl border border-white/15 bg-white/[0.09] p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/50">
+                    Delivery
+                  </p>
+
+                  <div className="mt-4 text-4xl font-bold">20+</div>
+                  <p className="text-sm text-white/60">Years building</p>
+
+                  <div className="mt-4 space-y-3">
+                    <Metric label="Architecture" value="92" />
+                    <Metric label="Design Systems" value="84" />
+                  </div>
+                </div>
+
+                {/* System */}
+                <div className="col-span-12 rounded-2xl border border-white/15 bg-white/[0.07] p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/50">
+                    System Behind the Interface
+                  </p>
+
+                  <div className="mt-4 grid grid-cols-3 gap-3">
+                    {systemLayers.map((layer) => (
+                      <div
+                        key={layer.label}
+                        className="rounded-xl border border-white/10 bg-black/10 p-3"
+                      >
+                        <p className="text-sm font-semibold">{layer.label}</p>
+                        <p className="text-xs text-white/50">{layer.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* vignette */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(6,2,24,0.45)_100%)]" />
     </section>
   );
-};
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between text-xs text-white/60">
+        <span>{label}</span>
+        <span>{value}</span>
+      </div>
+
+      <div className="h-2 overflow-hidden rounded-full bg-white/15">
+        <motion.div
+          className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-300"
+          initial={{ width: 0 }}
+          animate={{ width: `${value}%` }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default Hero;

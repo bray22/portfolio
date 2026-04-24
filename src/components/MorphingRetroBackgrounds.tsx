@@ -32,7 +32,7 @@ const MorphingRetroBackground: FC = () => {
 
       {/* Blob 2 */}
       <motion.div
-        className="absolute right-[-120px] top-[-80px] h-[620px] w-[620px] rounded-full bg-violet-600/35 blur-3xl"
+        className="absolute right-[-120px] top-[-80px] h-[620px] w-[620px] rounded-full bg-violet-500/20 blur-3xl"
         animate={{
           x: [0, -70, -20, 0],
           y: [0, 80, 20, 0],

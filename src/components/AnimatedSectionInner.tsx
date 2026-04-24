@@ -19,7 +19,7 @@ const AnimatedSectionInner: FC<AnimatedSectionInnerProps> = ({ children }) => {
     offset: ["start end", "end start"],
   });
 
-  const yRaw = useTransform(scrollYProgress, [0, 0.4, 1], [90, 0, 0]);
+  const yRaw = useTransform(scrollYProgress, [0, 0.15, 1], [70, 0, 0]);
 
   const y = useSpring(yRaw, {
     stiffness: 75,
