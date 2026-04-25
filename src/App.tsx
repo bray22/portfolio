@@ -15,16 +15,17 @@ function App() {
       <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white">
         <MorphingRetroBackground />
 
-        <div className="relative mx-auto max-w-7xl px-6 pb-6 pt-32 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-6 pb-6 pt-16 lg:px-8">
           <Hero />
         </div>
     <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
   <a
     href="#work"
-    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/70 backdrop-blur transition hover:text-white"
+    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/15 shadow-[0_0_20px_rgba(255,255,255,0.25)] text-white/70 backdrop-blur transition hover:text-white"
   >
     ↓
   </a>
+  
 </div>
       </section>
 
