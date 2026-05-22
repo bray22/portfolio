@@ -10,48 +10,84 @@ const MorphingRetroBackground: FC = () => {
         animate={{
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
         style={{
           backgroundImage:
             "linear-gradient(135deg, #14092e 0%, #2d0f5a 30%, #7a145e 60%, #1a093a 100%)",
-          backgroundSize: "240% 240%",
+          backgroundSize: "320% 320%",
         }}
       />
 
       {/* Blob 1 */}
       <motion.div
-        className="absolute -left-24 top-20 h-[520px] w-[520px] rounded-full bg-fuchsia-500/30 blur-3xl"
+        className="absolute -left-32 top-12 h-[620px] w-[620px] bg-fuchsia-500/45 blur-2xl"
         animate={{
-          x: [0, 80, 20, 0],
-          y: [0, -30, 70, 0],
-          scale: [1, 1.25, 0.9, 1],
-          borderRadius: ["45%", "60%", "38%", "45%"],
+          x: [0, 150, 40, 0],
+          y: [0, -80, 120, 0],
+          scale: [1, 1.45, 0.82, 1],
+          rotate: [0, 16, -10, 0],
+          borderRadius: [
+            "42% 58% 65% 35%",
+            "65% 35% 42% 58%",
+            "38% 62% 35% 65%",
+            "42% 58% 65% 35%",
+          ],
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Blob 2 */}
       <motion.div
-        className="absolute right-[-120px] top-[-80px] h-[620px] w-[620px] rounded-full bg-violet-500/20 blur-3xl"
+        className="absolute right-[-180px] top-[-120px] h-[720px] w-[720px] bg-violet-500/35 blur-2xl"
         animate={{
-          x: [0, -70, -20, 0],
-          y: [0, 80, 20, 0],
-          scale: [1, 0.85, 1.18, 1],
-          borderRadius: ["50%", "35%", "62%", "50%"],
+          x: [0, -150, -40, 0],
+          y: [0, 120, 40, 0],
+          scale: [1, 0.72, 1.35, 1],
+          rotate: [0, -18, 12, 0],
+          borderRadius: [
+            "60% 40% 35% 65%",
+            "35% 65% 60% 40%",
+            "68% 32% 45% 55%",
+            "60% 40% 35% 65%",
+          ],
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Blob 3 */}
       <motion.div
-        className="absolute bottom-[-180px] left-1/3 h-[560px] w-[760px] rounded-[45%] bg-pink-500/20 blur-3xl"
+        className="absolute bottom-[-220px] left-[25%] h-[620px] w-[820px] bg-pink-500/32 blur-2xl"
         animate={{
-          x: [0, -90, 60, 0],
-          y: [0, -40, 30, 0],
-          rotate: [0, 8, -6, 0],
-          scale: [1, 1.12, 0.96, 1],
+          x: [0, -150, 110, 0],
+          y: [0, -90, 70, 0],
+          rotate: [0, 18, -14, 0],
+          scale: [1, 1.28, 0.9, 1],
+          borderRadius: [
+            "45% 55% 60% 40%",
+            "62% 38% 35% 65%",
+            "35% 65% 55% 45%",
+            "45% 55% 60% 40%",
+          ],
         }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Extra morphing highlight */}
+      <motion.div
+        className="absolute left-[45%] top-[18%] h-[360px] w-[460px] bg-cyan-900/10 blur-2xl"
+        animate={{
+          x: [0, 90, -60, 0],
+          y: [0, 70, -40, 0],
+          rotate: [0, -14, 10, 0],
+          scale: [1, 1.35, 0.85, 1],
+          borderRadius: [
+            "55% 45% 35% 65%",
+            "35% 65% 60% 40%",
+            "70% 30% 45% 55%",
+            "55% 45% 35% 65%",
+          ],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Grain texture */}
@@ -90,7 +126,7 @@ const MorphingRetroBackground: FC = () => {
       </div>
 
       {/* Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,8,22,0.2)_50%,rgba(5,8,22,0.85)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,8,22,0.16)_48%,rgba(5,8,22,0.82)_100%)]" />
     </div>
   );
 };

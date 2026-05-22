@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import WorkPreview from "./components/WorkPreview";
 import WorkSection from "./components/WorkSection";
 import ExpertiseSection from "./components/ExpertiseSection";
 import AboutSection from "./components/AboutSection";
@@ -28,6 +29,8 @@ function App() {
   
 </div>
       </section>
+
+      {/* <WorkPreview /> ← add this between the sections */}
 
       <main className="relative bg-white text-slate-950">
         <WorkSection />

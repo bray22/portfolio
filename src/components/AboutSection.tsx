@@ -7,6 +7,7 @@ import AnimatedSectionInner from "./AnimatedSectionInner";
 import LightCard from "./cards/LightCard";
 import { fadeUp, stagger } from "../animations/motion";
 import { strengths } from "../data/strengths";
+import linkedinPhoto from "../images/linkedin-photo.png";
 
 const AboutSection: FC = () => {
   return (
@@ -22,7 +23,13 @@ const AboutSection: FC = () => {
           <motion.div variants={fadeUp}>
             <LightCard className="h-full border border-slate-200/80 bg-white/80 p-6 shadow-xl shadow-slate-200/60 backdrop-blur md:p-8">
               <div className="flex flex-col gap-6 md:flex-row md:items-center">
-                <div className="h-28 w-28 shrink-0 rounded-full bg-gradient-to-br from-slate-300 to-slate-500 shadow-inner" />
+                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-full shadow-inner">
+                <img
+                  src={linkedinPhoto}
+                  alt="Ben"
+                  className="h-full w-full object-cover"
+                />
+              </div>
 
                 <div>
                   <p className="mb-3 text-xs font-medium uppercase tracking-[0.28em] text-blue-600/70">
