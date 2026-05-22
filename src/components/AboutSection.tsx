@@ -37,7 +37,7 @@ const AboutSection: FC = () => {
                   </p>
 
                   <h3 className="text-3xl font-semibold tracking-tight text-slate-950">
-                    Hi, I’m <span className="text-blue-600">Benjamin.</span>
+                    Hi, I’m <span className="text-blue-600">Ben.</span>
                   </h3>
 
                   <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 md:text-base">

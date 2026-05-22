@@ -15,7 +15,14 @@ const Footer: FC = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="#" className="hover:text-slate-900">LinkedIn</a>
+          <a
+            href="https://www.linkedin.com/in/benjamin-ray/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-slate-900"
+          >
+            LinkedIn
+          </a>
           <a href="#" className="hover:text-slate-900">GitHub</a>
         </div>
 

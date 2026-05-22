@@ -30,9 +30,9 @@ const screenshots = [
   { src: cult1, label: "Cult Eyewear", tag: "Web app" },
   { src: cult2, label: "Cult Eyewear", tag: "Web app" },
   { src: cult3, label: "Cult Eyewear", tag: "Web app" },
-  { src: rosetta1, label: "Rosetta Stone/Lexia", tag: "Platform" },
-  { src: rosetta2, label: "Rosetta Stone/Lexia", tag: "Platform" },
-  { src: rosetta3, label: "Rosetta Stone/Lexia", tag: "Platform" },
+  { src: rosetta1, label: "Rosetta Stone/Lexia", tag: "Website/Mobile" },
+  { src: rosetta2, label: "Rosetta Stone/Lexia", tag: "Website/Mobile" },
+  { src: rosetta3, label: "Rosetta Stone/Lexia", tag: "Website/Mobile" },
   { src: af1, label: "Agent Flow", tag: "Website" },
   { src: af2, label: "Agent Flow", tag: "Website" },
   { src: af3, label: "Agent Flow", tag: "Website" },
@@ -270,7 +270,8 @@ function Hero() {
 
               if (abs > 2) return null;
 
-              const isPortrait = item.label === "FHF";
+              const isMobile = item.tag === "Mobile";
+              const isTablet = item.tag === "Tablet";
 
               const tx = offset * 220;
               const tz = -abs * 130;
@@ -287,8 +288,8 @@ function Hero() {
                   }}
                   className="pointer-events-auto absolute cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#0b0d18] transition-all duration-700"
                   style={{
-                    width: isPortrait ? 145 : 430,
-                    height: 285,
+                    width: isMobile ? 145 : isTablet ? 520 : 430,
+                    height: isTablet ? 220 : 285,
                     transform: `translateX(${tx + direction * 4}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`,
                     opacity,
                     zIndex,
@@ -304,43 +305,70 @@ function Hero() {
                     <div className="absolute inset-0 -z-10 scale-110 bg-violet-500/16 blur-3xl" />
                   )}
 
-                  {isPortrait ? (
-                    /* Mobile status bar */
-                    <div className="flex h-7 shrink-0 items-center justify-between border-b border-white/5 bg-[#171827] px-3">
-                      <span className="text-[10px] font-medium text-white/50">9:41</span>
-                      <div className="h-3 w-14 rounded-full bg-[#0b0d18]" /> {/* notch */}
-                      <div className="flex items-center gap-1">
-                        {/* signal bars */}
-                        <div className="flex items-end gap-[2px]">
-                          <span className="h-1 w-[3px] rounded-sm bg-white/40" />
-                          <span className="h-1.5 w-[3px] rounded-sm bg-white/40" />
-                          <span className="h-2 w-[3px] rounded-sm bg-white/40" />
-                          <span className="h-2.5 w-[3px] rounded-sm bg-white/40" />
-                        </div>
-                        {/* battery */}
-                        <div className="relative flex h-2.5 w-5 items-center rounded-[3px] border border-white/40 px-[2px]">
-                          <div className="h-1.5 w-[55%] rounded-sm bg-white/50" />
-                          <div className="absolute -right-[3px] h-1 w-[3px] rounded-r-sm bg-white/30" />
+                  {isMobile ? (
+                    <div className="relative flex h-full flex-col items-center overflow-hidden rounded-[36px] border border-white/10 bg-[#08090f] shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+                      <div className="flex h-8 w-full items-center justify-between rounded-[26px] border border-white/10 bg-[#161823]/95 px-3 text-[10px] font-medium text-white/70 shadow-inner shadow-black/25">
+                        <span>9:41</span>
+                        <div className="h-2.5 w-12 rounded-full bg-[#0b0d18]" />
+                        <div className="flex items-center gap-1">
+                          <div className="flex items-end gap-[2px]">
+                            <span className="h-1 w-[3px] rounded-sm bg-white/40" />
+                            <span className="h-1.5 w-[3px] rounded-sm bg-white/40" />
+                            <span className="h-2 w-[3px] rounded-sm bg-white/40" />
+                            <span className="h-2.5 w-[3px] rounded-sm bg-white/40" />
+                          </div>
+                          <div className="relative flex h-2.5 w-5 items-center rounded-[3px] border border-white/40 px-[2px]">
+                            <div className="h-1.5 w-[55%] rounded-sm bg-white/50" />
+                            <div className="absolute -right-[3px] h-1 w-[3px] rounded-r-sm bg-white/30" />
+                          </div>
                         </div>
                       </div>
+
+                      <div className="relative flex-1 w-full overflow-hidden rounded-[30px] border border-white/10 bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+                        <div className="absolute inset-0 overflow-hidden rounded-[30px]">
+                          <img
+                            src={item.src}
+                            alt={`${item.label} ${item.tag} screenshot`}
+                            className="pointer-events-none h-full w-full object-cover"
+                            draggable={false}
+                          />
+                        </div>
+                        <div className="absolute bottom-3 left-1/2 h-1.5 w-12 -translate-x-1/2 rounded-full bg-white/10" />
+                      </div>
+                    </div>
+                  ) : isTablet ? (
+                    <div className="relative flex h-full items-center overflow-hidden rounded-[34px] border border-white/10 bg-[#10141f] shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
+                      <div className="absolute inset-x-0 top-0 h-10 bg-[#1d2433]/95" />
+                      <div className="relative mx-4 mt-3 flex h-[calc(100%-46px)] w-full overflow-hidden rounded-[28px] border border-white/10 bg-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]">
+                        <div className="absolute left-1/2 top-3 h-1.5 w-14 -translate-x-1/2 rounded-full bg-white/15" />
+                        <div className="absolute right-4 top-3 h-1 w-1.5 rounded-full bg-white/20" />
+                        <img
+                          src={item.src}
+                          alt={`${item.label} ${item.tag} screenshot`}
+                          className="pointer-events-none h-full w-full object-cover object-top"
+                          draggable={false}
+                        />
+                      </div>
+                      <div className="absolute bottom-3 left-1/2 h-1.5 w-20 -translate-x-1/2 rounded-full bg-white/10 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]" />
                     </div>
                   ) : (
                     /* Browser chrome */
-                    <div className="flex h-7 shrink-0 items-center gap-1.5 border-b border-white/5 bg-[#171827] px-3">
-                      <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-                      <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-                      <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-                      <div className="mx-2 h-2.5 flex-1 rounded-full bg-white/5" />
-                    </div>
+                    <>
+                      <div className="flex h-7 shrink-0 items-center gap-1.5 border-b border-white/5 bg-[#171827] px-3">
+                        <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                        <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                        <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                        <div className="mx-2 h-2.5 flex-1 rounded-full bg-white/5" />
+                      </div>
+                      <img
+                        src={item.src}
+                        alt={`${item.label} ${item.tag} screenshot`}
+                        className="pointer-events-none w-full object-contain object-center"
+                        style={{ height: "calc(100% - 28px)" }}
+                        draggable={false}
+                      />
+                    </>
                   )}
-
-                  <img
-                    src={item.src}
-                    alt={`${item.label} ${item.tag} screenshot`}
-                    className="pointer-events-none w-full object-cover object-top"
-                    style={{ height: "calc(100% - 28px)" }}
-                    draggable={false}
-                  />
 
                   {offset === 0 && (
                     <>

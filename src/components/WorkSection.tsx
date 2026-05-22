@@ -11,24 +11,30 @@ import { fadeUp, stagger } from "../animations/motion";
 import { caseStudies } from "../data/caseStudies";
 import type { CaseStudy } from "../data/caseStudies";
 
-const BrowserFrame: FC<{ src: string; alt: string; caption?: string }> = ({ src, alt, caption }) => (
-  <div className="overflow-hidden rounded-2xl bg-[#1e1e24]">
-    <div className="flex items-center gap-2 bg-[#2a2a32] px-3 py-2">
-      <div className="flex gap-1.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#e24b4a]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ef9f27]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#639922]" />
+const BrowserFrame: FC<{ src: string; alt: string; caption?: string; label?: string }> = ({ src, alt, caption, label }) => {
+  const frameLabel = label
+    ? `app.${label.toLowerCase().replace(/[^a-z0-9]+/g, "")}.com`
+    : "app.rosettastone.com";
+
+  return (
+    <div className="overflow-hidden rounded-2xl bg-[#1e1e24]">
+      <div className="flex items-center gap-2 bg-[#2a2a32] px-3 py-2">
+        <div className="flex gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#e24b4a]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#ef9f27]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#639922]" />
+        </div>
+        <div className="flex-1 rounded bg-[#1e1e24] px-2 py-0.5 text-[10px] text-slate-500 font-mono truncate">
+          {frameLabel}
+        </div>
       </div>
-      <div className="flex-1 rounded bg-[#1e1e24] px-2 py-0.5 text-[10px] text-slate-500 font-mono truncate">
-        app.rosettastone.com
-      </div>
+      <img src={src} alt={alt} className="block w-full object-contain object-center" />
+      {caption && (
+        <p className="px-3 py-2 text-[11px] text-slate-400 leading-relaxed">{caption}</p>
+      )}
     </div>
-    <img src={src} alt={alt} className="block w-full object-cover object-top" />
-    {caption && (
-      <p className="px-3 py-2 text-[11px] text-slate-400 leading-relaxed">{caption}</p>
-    )}
-  </div>
-);
+  );
+};
 
 const CaseStudyModal: FC<{ study: CaseStudy; onClose: () => void }> = ({ study, onClose }) => {
   const cs = study.caseStudy!;
@@ -93,6 +99,7 @@ const CaseStudyModal: FC<{ study: CaseStudy; onClose: () => void }> = ({ study, 
                       src={shots[activeIdx].src}
                       alt={shots[activeIdx].caption}
                       caption={shots[activeIdx].caption}
+                      label={study.company}
                     />
                   </motion.div>
                 </AnimatePresence>
