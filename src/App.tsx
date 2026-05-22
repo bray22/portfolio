@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import WorkPreview from "./components/WorkPreview";
 import WorkSection from "./components/WorkSection";
 import ExpertiseSection from "./components/ExpertiseSection";
 import AboutSection from "./components/AboutSection";
