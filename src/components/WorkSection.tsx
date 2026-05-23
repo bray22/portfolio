@@ -210,6 +210,7 @@ const WorkSection: FC = () => {
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {caseStudies.map((item, i) => {
                 const Icon = item.icon;
+                const frameLabel = `app.${item.company.toLowerCase().replace(/[^a-z0-9]+/g, "")}.com`;
 
                 return (
                   <motion.div
@@ -228,7 +229,7 @@ const WorkSection: FC = () => {
                             <span className="h-2 w-2 rounded-full bg-[#ef9f27]" />
                             <span className="h-2 w-2 rounded-full bg-[#639922]" />
                             <span className="ml-1 flex-1 rounded bg-[#1e1e24] px-2 py-0.5 text-[9px] text-slate-500 font-mono">
-                              app.rosettastone.com
+                              {frameLabel}
                             </span>
                           </div>
                           <div className="h-32 overflow-hidden">

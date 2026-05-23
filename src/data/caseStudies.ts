@@ -3,6 +3,9 @@ import {
   HeartPulse,
   Smartphone,
   BookOpen,
+  Gamepad2,
+  Landmark,
+  GraduationCap,
 } from "lucide-react";
 import type { ComponentType } from "react";
 
@@ -18,6 +21,9 @@ import fhf3 from "../images/screenshots/fhf-3.png";
 import rosetta1 from "../images/screenshots/rosetta-1.png";
 import rosetta2 from "../images/screenshots/rosetta-2.png";
 import rosetta3 from "../images/screenshots/rosetta-3.png";
+import hasbro1 from "../images/screenshots/hasbro-1.png";
+import hasbro2 from "../images/screenshots/hasbro-2.png";
+import hasbro3 from "../images/screenshots/hasbro-3.png";
 
 export type CaseStudy = {
   icon: ComponentType<any>;
@@ -48,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
     previewScreenshot: trimark2,
     caseStudy: {
       overview:
-        "Led a full rebuild of Trimark USA’s B2B ordering platform, delivering a modular React experience for wholesale customers and supply chain teams handling over 10,000 SKUs.",
+        "Led a full rebuild of Trimark USA's B2B ordering platform, delivering a modular React experience for wholesale customers and supply chain teams handling over 10,000 SKUs.",
       challenge:
         "The legacy ordering system was brittle: batch inventory updates failed often, pricing rules were hardcoded, and order entry workflows were slow for high-volume buyers.",
       solution:
@@ -137,28 +143,109 @@ export const caseStudies: CaseStudy[] = [
     company: "Rosetta Stone",
     description:
       "Built accessible learning interfaces and contributed to the launch of a hybrid iOS educational experience.",
-    metrics: ["K–12 at scale", "Accessible by design"],
+    metrics: ["K-12 at scale", "Accessible by design"],
     previewScreenshot: rosetta3,
     caseStudy: {
       overview:
-        "Partnered with Rosetta Stone to evolve their K–12 language learning suite — shipping an accessible, mobile-first redesign and spearheading the launch of a hybrid iOS learning experience used by students across the country.",
+        "Partnered with Rosetta Stone to evolve their K-12 language learning suite, shipping an accessible, mobile-first redesign and contributing to a hybrid iOS learning experience used by students across the country.",
       challenge:
-        "Rosetta Stone's existing web interfaces weren't keeping pace with how students actually learned — on phones, in short bursts, across wildly different ability levels. Accessibility compliance was inconsistent, iOS engagement was lagging, and the codebase lacked the modularity needed to ship features fast.",
+        "Rosetta Stone's existing web interfaces were not keeping pace with how students learned across devices, ability levels, and short classroom workflows. Accessibility compliance was inconsistent, iOS engagement was lagging, and the codebase needed more modular UI patterns.",
       solution:
-        "Rebuilt core learning flows in React Native with a shared component library that ran on both web and iOS. Implemented WCAG 2.1 AA accessibility standards from the ground up — semantic markup, screen reader support, keyboard navigation, and contrast-compliant theming. Designed a lightweight Node.js API layer to serve adaptive lesson content and sync progress across devices in real time.",
+        "Rebuilt core learning flows with shared components, accessible markup, keyboard-friendly interactions, and responsive UI patterns. Supported the hybrid iOS experience and the systems needed to keep lesson progress consistent across devices.",
       outcome:
-        "The hybrid iOS experience launched on schedule, giving K–12 students a seamless cross-device learning path for the first time. Accessibility improvements passed external audit, and the shared component system cut new feature development time significantly.",
-      tech: ["React Native", "Node.js", "JavaScript", "iOS", "WCAG 2.1 AA"],
+        "The hybrid iOS experience launched on schedule, giving K-12 students a smoother cross-device learning path. Accessibility and shared component improvements made future education features easier to deliver.",
+      tech: ["React", "Redux", "JavaScript", "CSS/SASS", "Webpack"],
       highlights: [
-        { label: "Platform", value: "K–12 at scale" },
-        { label: "Accessibility", value: "WCAG 2.1 AA" },
+        { label: "Platform", value: "K-12 at scale" },
+        { label: "Accessibility", value: "Accessible UI" },
         { label: "Target", value: "iOS + Web" },
-        { label: "Focus", value: "Accessible by design" },
+        { label: "Focus", value: "Learning UX" },
       ],
       screenshots: [
-        { src: rosetta3, caption: "Student learning dashboard — Word Study, Grammar & Comprehension modules" },
-        { src: rosetta1, caption: "Teacher dashboard — Grade 6 ELA class overview with skill tracking" },
-        { src: rosetta2, caption: "Lexia PowerUp login screen — accessible entry point for students and teachers" },
+        { src: rosetta3, caption: "Student learning dashboard with Word Study, Grammar, and Comprehension modules." },
+        { src: rosetta1, caption: "Teacher dashboard with class overview and skill tracking." },
+        { src: rosetta2, caption: "Lexia PowerUp login screen for students and teachers." },
+      ],
+    },
+  },
+  {
+    icon: Landmark,
+    title: "Benefits & Financial Data Platforms",
+    company: "Sun Life Financial",
+    description:
+      "Built customer-facing benefits management UIs and web applications integrated with Java services for real-time financial data.",
+    metrics: ["2 roles", "Real-time data"],
+    caseStudy: {
+      overview:
+        "Worked across two Sun Life Financial roles building customer web applications for benefits management and financial data workflows.",
+      challenge:
+        "Customers needed reliable, understandable interfaces for managing benefits and viewing financial information backed by Java service integrations.",
+      solution:
+        "Built clean UIs, integrated Java services, supported analysts through requirements gathering, and delivered deadline-driven application features across customer-facing financial workflows.",
+      outcome:
+        "Improved the customer benefits experience while supporting internal teams with maintainable application interfaces and dependable service-backed data.",
+      tech: ["HTML5", "CSS3", "JavaScript", "ExtJS", "Flex", "jQuery", "ColdFusion", "SQL"],
+      highlights: [
+        { label: "Domain", value: "Benefits" },
+        { label: "Data", value: "Real-time" },
+        { label: "Integration", value: "Java services" },
+        { label: "Focus", value: "Customer UX" },
+      ],
+    },
+  },
+  {
+    icon: Gamepad2,
+    title: "Global Brand & CMS Sites",
+    company: "Hasbro",
+    description:
+      "Designed and maintained front-end and back-end systems for high-profile toy brands, international sites, and marketing asset workflows.",
+    metrics: ["30+ countries", "Custom CMS"],
+    previewScreenshot: hasbro1,
+    caseStudy: {
+      overview:
+        "Built and maintained Hasbro product sites for major brands including GI Joe, Transformers, Star Wars, Playskool, My Little Pony, Littlest Pet Shop, and Monopoly.",
+      challenge:
+        "Brand teams needed localized campaign sites, product content, videos, audio clips, and translations managed across dozens of markets without turning every update into a developer handoff.",
+      solution:
+        "Designed front-end and back-end features for consumer-facing product sites, configured redirects and locale handling for international experiences, and built a custom CMS to manage marketing assets and translations.",
+      outcome:
+        "Supported high-visibility global brand launches with reusable content workflows, stronger localization support, and faster marketing updates across 30+ countries.",
+      tech: ["HTML5", "CSS3", "JavaScript", "ExtJS", "PHP", "jQuery", "ColdFusion", "SQL"],
+      highlights: [
+        { label: "Reach", value: "30+ countries" },
+        { label: "Brands", value: "Major toy sites" },
+        { label: "Platform", value: "Custom CMS" },
+        { label: "Focus", value: "Localization" },
+      ],
+      screenshots: [
+        { src: hasbro1, caption: "Brand and product marketing site experience." },
+        { src: hasbro2, caption: "Consumer-facing campaign page for a high-profile toy brand." },
+        { src: hasbro3, caption: "Marketing content and product presentation workflow." },
+      ],
+    },
+  },
+  {
+    icon: GraduationCap,
+    title: "Academic Web Applications",
+    company: "Babson College",
+    description:
+      "Developed software supporting administrative and academic programs, including authentication, workflow, and notification services.",
+    metrics: ["Core services", "Academic systems"],
+    caseStudy: {
+      overview:
+        "Built web applications supporting Babson College's administrative and academic programs.",
+      challenge:
+        "College teams needed dependable internal software for academic operations, administrative workflows, and shared application services.",
+      solution:
+        "Developed and implemented core application components, advocated for modern web development practices, and built authentication, workflow, and notification services.",
+      outcome:
+        "Helped modernize Babson's web application foundation and supported academic and administrative teams with reusable internal systems.",
+      tech: ["HTML", "CSS", "JavaScript", "ColdFusion", "SQL"],
+      highlights: [
+        { label: "Platform", value: "Academic apps" },
+        { label: "Services", value: "Auth + workflow" },
+        { label: "Users", value: "Campus teams" },
+        { label: "Focus", value: "Modernization" },
       ],
     },
   },
