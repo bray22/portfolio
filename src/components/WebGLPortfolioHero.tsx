@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, OrbitControls, RoundedBox, Text, useTexture } from "@react-three/drei";
 import { ChevronLeft, ChevronRight, RotateCw } from "lucide-react";
+import type { Group } from "three";
 
 const projects = [
   {
@@ -125,7 +126,7 @@ function ProjectCard({
   total: number;
   onSelect: () => void;
 }) {
-  const cardRef = useRef<any>(null);
+  const cardRef = useRef<Group | null>(null);
 
   const angle = (index / total) * Math.PI * 2;
   const radius = 3.25;
@@ -185,7 +186,7 @@ function Scene({
   active: number;
   setActive: (value: number) => void;
 }) {
-  const groupRef = useRef<any>(null);
+  const groupRef = useRef<Group | null>(null);
 
   useFrame((state) => {
     if (!groupRef.current) return;

@@ -1,8 +1,8 @@
 import { Code2, Users, Rocket } from "lucide-react";
-import type { ComponentType } from "react";
+import type { LucideIcon } from "lucide-react";
 
 export type Strength = {
-  icon: ComponentType<any>;
+  icon: LucideIcon;
   title: string;
   text: string;
 };
