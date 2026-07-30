@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio built with React, TypeScript, Vite, and Tailwind CSS. It showcases selected work, experience, technical expertise, and contact links in a polished single-page layout with animated sections and interactive case studies.
 
-## Highlights
+## ✨ Highlights
 
 - Hero section with animated project carousel and responsive 3D-style presentation
 - Selected work section with detailed case studies for key client projects
@@ -12,7 +12,7 @@ A modern, responsive portfolio built with React, TypeScript, Vite, and Tailwind 
 - Contact section with email and LinkedIn calls to action
 - Mobile-friendly navigation and GitHub Pages deployment support
 
-## Tech Stack
+## 🧰 Tech Stack
 
 - React 19
 - TypeScript
@@ -23,7 +23,7 @@ A modern, responsive portfolio built with React, TypeScript, Vite, and Tailwind 
 - Lucide icons
 - Three.js
 
-## Project Structure
+## 🗂️ Project Structure
 
 - `src/App.tsx` - main page composition
 - `src/components/` - reusable sections, cards, icons, and layout pieces
@@ -35,7 +35,7 @@ A modern, responsive portfolio built with React, TypeScript, Vite, and Tailwind 
 - `src/assets/` - misc static assets bundled by Vite (e.g. `hero.png`)
 - `public/` - static assets served directly by Vite
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -72,7 +72,7 @@ npm run preview
 npm run lint
 ```
 
-## Styling
+## 🎨 Styling
 
 - **Tailwind CSS 4** is the primary styling layer, wired in via the `@tailwindcss/vite` plugin in `vite.config.ts` - there is no separate `tailwind.config.js`; Tailwind is imported directly with `@import "tailwindcss";` at the top of `src/index.css`.
 - `src/index.css` also holds the small set of global, non-utility styles: smooth scrolling (`html { scroll-behavior: smooth }`), base body background/font (`Inter` with system-font fallbacks), and min-height resets for `body`/`#root`.
@@ -80,7 +80,7 @@ npm run lint
 - Motion/animation is handled with **Framer Motion**, with reusable variants centralized in `src/animations/motion.ts` (e.g. `fadeUp`, `stagger`) so sections can share consistent enter/stagger timing instead of redefining transitions inline.
 - 3D/WebGL visuals (hero background, morphing shapes) are built with **React Three Fiber**, **Drei**, and **Three.js**, layered underneath the Tailwind-styled content.
 
-## TypeScript
+## 🔷 TypeScript
 
 - The project uses TypeScript project references, split across three configs:
   - `tsconfig.json` - root config with no direct compiler options; references the two configs below
@@ -90,13 +90,13 @@ npm run lint
 - `npm run build` runs `tsc -b` (a project-references build/type-check) before `vite build`, so type errors will fail the build rather than only surfacing in the editor.
 - ESLint is configured with `typescript-eslint`'s recommended rules (`eslint.config.js`) alongside `eslint-plugin-react-hooks` and `eslint-plugin-react-refresh`, but does not currently use the type-aware (`recommendedTypeChecked`/`strictTypeChecked`) rule sets.
 
-## Testing
+## 🧪 Testing
 
 - There is currently **no automated test suite** in this repo - no Vitest/Jest, no component or unit tests, and no test scripts in `package.json`.
 - The only automated checks today are `npm run build` (type-checking via `tsc -b`) and `npm run lint` (ESLint). Both are worth running before pushing changes.
 - If you add tests, `Vitest` is the natural fit given the existing Vite tooling (shares config and transform pipeline with the app), paired with `@testing-library/react` for component-level tests.
 
-## Deployment
+## 📦 Deployment
 
 The site is configured for GitHub Pages deployment with:
 
@@ -106,13 +106,13 @@ The site is configured for GitHub Pages deployment with:
 
 If you deploy the app to a different domain or repository path, update the Vite `base` value accordingly.
 
-## Content Notes
+## 📝 Content Notes
 
 - Portfolio content is data-driven from `src/data/`
 - Project screenshots and logos are stored locally in the repo
 - Contact links currently point to email and LinkedIn
 
-## Scripts
+## 📜 Scripts
 
 - `npm run dev` - start the development server
 - `npm run build` - type-check and build the app
@@ -120,6 +120,6 @@ If you deploy the app to a different domain or repository path, update the Vite 
 - `npm run preview` - preview the production build locally
 - `npm run deploy` - build and publish to GitHub Pages
 
-## License
+## ⚖️ License
 
 No license file is currently included. This is a personal portfolio repo, so absent an explicit license the code defaults to standard copyright (all rights reserved) rather than being open for reuse. Add a `LICENSE` file (e.g. MIT) if you want to permit reuse.
