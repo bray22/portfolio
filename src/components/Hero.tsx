@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type PointerEvent,
+  type WheelEvent as ReactWheelEvent,
+} from "react";
 import { motion, type PanInfo } from "framer-motion";
 
 import trimark1 from "../images/screenshots/trimark-1.png";
@@ -72,34 +79,34 @@ function Hero() {
   const holdInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const wheelLock = useRef(false);
 
-  const next = () => {
+  const next = useCallback(() => {
     setDirection(1);
     setActive((i) => (i + 1) % items.length);
-  };
+  }, [items.length]);
 
-  const prev = () => {
+  const prev = useCallback(() => {
     setDirection(-1);
     setActive((i) => (i - 1 + items.length) % items.length);
-  };
+  }, [items.length]);
 
-  const stopHolding = () => {
+  const stopHolding = useCallback(() => {
     if (holdInterval.current) {
       clearInterval(holdInterval.current);
       holdInterval.current = null;
     }
-  };
+  }, []);
 
-  const startHoldingNext = () => {
+  const startHoldingNext = useCallback(() => {
     stopHolding();
     setPaused(true);
     holdInterval.current = setInterval(next, 850);
-  };
+  }, [next, stopHolding]);
 
-  const startHoldingPrev = () => {
+  const startHoldingPrev = useCallback(() => {
     stopHolding();
     setPaused(true);
     holdInterval.current = setInterval(prev, 850);
-  };
+  }, [prev, stopHolding]);
 
   useEffect(() => {
     if (paused || dragging) return;
@@ -109,7 +116,7 @@ function Hero() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [paused, dragging, active]);
+  }, [paused, dragging, next]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -130,7 +137,7 @@ function Hero() {
       window.removeEventListener("keydown", handleKeyDown);
       stopHolding();
     };
-  }, []);
+  }, [next, prev, stopHolding]);
 
   const getOffset = (i: number) => {
     let offset = i - active;
@@ -176,7 +183,7 @@ function Hero() {
     }, 80);
   };
 
-  const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+  const handleWheel = (event: ReactWheelEvent<HTMLDivElement>) => {
     if (wheelLock.current) return;
 
     const isHorizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);

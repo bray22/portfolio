@@ -7,7 +7,7 @@ import {
   Landmark,
   GraduationCap,
 } from "lucide-react";
-import type { ComponentType } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import trimark1 from "../images/screenshots/trimark-1.png";
 import trimark2 from "../images/screenshots/trimark-2.png";
@@ -26,7 +26,7 @@ import hasbro2 from "../images/screenshots/hasbro-2.png";
 import hasbro3 from "../images/screenshots/hasbro-3.png";
 
 export type CaseStudy = {
-  icon: ComponentType<any>;
+  icon: LucideIcon;
   title: string;
   company: string;
   description: string;

@@ -1,5 +1,5 @@
 // src/components/WorkPreview.tsx
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import trimark1 from "../images/screenshots/trimark-1.png";
 import trimark2 from "../images/screenshots/trimark-2.png";
 import trimark3 from "../images/screenshots/trimark-3.png";
@@ -58,14 +58,14 @@ export default function WorkPreview() {
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const next = () => setActive((i) => (i + 1) % items.length);
-  const prev = () => setActive((i) => (i - 1 + items.length) % items.length);
+  const next = useCallback(() => setActive((i) => (i + 1) % items.length), [items.length]);
+  const prev = useCallback(() => setActive((i) => (i - 1 + items.length) % items.length), [items.length]);
 
   useEffect(() => {
     if (paused) return;
     timerRef.current = setInterval(next, 3500);
     return () => clearInterval(timerRef.current!);
-  }, [paused, active]);
+  }, [paused, next]);
 
   const getOffset = (i: number) => {
     let o = i - active;
