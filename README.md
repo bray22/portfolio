@@ -122,4 +122,4 @@ If you deploy the app to a different domain or repository path, update the Vite 
 
 ## ⚖️ License
 
-No license file is currently included. This is a personal portfolio repo, so absent an explicit license the code defaults to standard copyright (all rights reserved) rather than being open for reuse. Add a `LICENSE` file (e.g. MIT) if you want to permit reuse.
+This project is licensed under the [MIT License](./LICENSE).
